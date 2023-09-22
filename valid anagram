@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        set<char> s1 ,s2;
+        map<char , int> m1 , m2;
+
+        for(auto c : s){
+            s1.insert(c);
+            m1[c] += 1;
+        }
+
+        for(auto c : t){
+            s2.insert(c);
+            m2[c] += 1;
+        }
+
+        if(s1==s2){
+            for(auto c : s1){
+                if(m1[c] != m2[c]){
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+};
