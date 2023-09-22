@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int countEven(int num) {
+        int c=0;
+        for(int i=1 ; i<=num ; i++){
+            int n=i , flag=0;
+            while(n>0){
+                flag += n%10;
+                n /= 10;
+            }
+
+            if(flag%2==0){
+                c++;
+            }
+        }
+        return c;
+    }
+};
