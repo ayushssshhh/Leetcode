@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int compress(vector<char> &chars)
+{
+    string op;
+    int n = chars.size() , count = 1;
+
+    if(n==1){
+        return n;
+    }
+
+    for(int i=0 ; i<n ; i++){
+        while(i<n-1 and chars[i] == chars[i+1]){
+            count++;
+            i++;
+        }
+
+        op += chars[i];
+        if(count > 1){
+            op += to_string(count);
+        }
+        count = 1;
+    }
+
+    chars.clear();
+
+    for(auto ch : op){
+        chars.push_back(ch);
+    }
+
+    return chars.size();
+}
+};
