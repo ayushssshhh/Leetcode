@@ -1,0 +1,26 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int n = nums.size() , nz=0;
+        if(n==1){
+            return;
+        }
+
+        vector<int> res;
+
+        for(int x : nums){
+            if(x!=0){
+                res.push_back(x);
+            }
+            else{
+                nz++;
+            }
+        }
+
+        for(int i=0 ; i<nz ; i++){
+            res.push_back(0);
+        }
+
+        nums = res;
+    }
+};
