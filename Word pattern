@@ -1,0 +1,47 @@
+class Solution {
+public:
+    bool wordPattern(string pattern, string s) {
+        vector<string> st;
+    
+        string ch;
+        for(char c : s){
+            if(c!=' '){
+                ch += c;
+            }
+            else{
+                st.push_back(ch);
+                ch.clear();
+            }
+        }
+        st.push_back(ch);
+
+        map<char , string> m;
+        int i=0;
+        for(auto ch : st){
+            m[pattern[i++]] = ch;
+        }
+
+        string temp;
+        for(auto ch : pattern){
+            temp += m[ch] + " ";
+        }
+
+        temp.pop_back();
+
+        set<string> test1;
+        set<char> test2;
+        for(auto ch : m){
+            test2.insert(ch.first);
+            test1.insert(ch.second);
+        }
+
+        if(test1.size() != test2.size()){
+            return false;
+        }
+
+        if(temp==s){
+            return true;
+        }
+        return false;
+    }
+};
