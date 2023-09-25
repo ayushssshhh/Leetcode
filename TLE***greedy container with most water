@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int n = height.size() , s=0 , max=0 , temp=0;
+
+        for(int i=0 ; i<n-1 ; i++){
+            for(int j=i+1 ; j<n ; j++){
+                int hTank = height[i]<height[j] ? height[i] : height[j]; 
+                int lTank = j-i;
+                temp = lTank*hTank;
+                max = max>temp ? max : temp;
+            }
+        }
+
+        return max;
+    }
+};
